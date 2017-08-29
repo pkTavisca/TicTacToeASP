@@ -68,6 +68,7 @@
     <Content Include="packages.config" />
     <Content Include="cross.svg" />
     <Content Include="circle.svg" />
+    <Content Include="robotoFont.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

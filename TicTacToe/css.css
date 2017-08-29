@@ -17,20 +17,20 @@ header {
     position: relative;
 }
 
-#tttTable td {
-    border-left: 3px solid black;
-    border-top: 3px solid black;
-    width: 7em;
-    height: 7em;
-}
+    #tttTable td {
+        border-left: 3px solid black;
+        border-top: 3px solid black;
+        width: 7em;
+        height: 7em;
+    }
 
-#tttTable tr td:first-child {
-    border-left: none;
-}
+    #tttTable tr td:first-child {
+        border-left: none;
+    }
 
-#tttTable tr:first-child td {
-    border-top: none;
-}
+    #tttTable tr:first-child td {
+        border-top: none;
+    }
 
 .cross {
     background: url(cross.svg) no-repeat center;
