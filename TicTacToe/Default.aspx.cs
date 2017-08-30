@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace TicTacToe
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,7 +31,7 @@ namespace TicTacToe
             value[lastNum] = player1Turn.Value.Equals("true") ? '1' : '2';
             gameMap.Value = value.ToString();
 
-            if (HasGameEnded())
+            if (HasPlayerWon())
             {
                 return;
             }
@@ -40,16 +40,29 @@ namespace TicTacToe
             playerName.InnerText = player1Turn.Value.Equals("true") ? "Player1" : "Player2";
         }
 
-        private bool HasGameEnded()
+        private bool HasPlayerWon()
         {
-            int[][] board = new int[3][];
-            for (int i = 0; i < board.Length; i++)
+            for (int i = 0; i < gameMap.Value.Length; i += 3)
             {
-                board[i] = new int[3];
-                for (int j = 0; j < board[0].Length; j++)
+                if (gameMap.Value[i] == gameMap.Value[i + 1] && gameMap.Value[i] == gameMap.Value[i + 2])
                 {
-
+                    return true;
                 }
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                if (gameMap.Value[i] == gameMap.Value[i + 3] && gameMap.Value[i] == gameMap.Value[i + 6])
+                {
+                    return true;
+                }
+            }
+            if (gameMap.Value[0] == gameMap.Value[4] && gameMap.Value[0] == gameMap.Value[8])
+            {
+                return true;
+            }
+            if (gameMap.Value[2] == gameMap.Value[4] && gameMap.Value[2] == gameMap.Value[6])
+            {
+                return true;
             }
             return false;
         }

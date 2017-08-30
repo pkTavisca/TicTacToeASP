@@ -69,6 +69,7 @@
     <Content Include="cross.svg" />
     <Content Include="circle.svg" />
     <Content Include="robotoFont.ttf" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
