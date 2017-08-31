@@ -21,8 +21,10 @@ namespace TicTacToe
         }
         protected void Button_Click(object sender, EventArgs e)
         {
+            if (hasWon.Value.Equals("true")) return;
             string buttonText = ((Button)sender).Text;
             if (buttonText.Length > 0) return;
+
             ((Button)sender).Text = player1Turn.Value.Equals("true") ? "O" : "X";
 
             string id = ((Button)sender).ID;
@@ -30,9 +32,12 @@ namespace TicTacToe
             StringBuilder value = new StringBuilder(gameMap.Value);
             value[lastNum] = player1Turn.Value.Equals("true") ? '1' : '2';
             gameMap.Value = value.ToString();
-
             if (HasPlayerWon())
             {
+                hasWon.Value = "true";
+                currentTurn.Style["display"] = "none";
+                resultMessage.Style["display"] = "block";
+                resultMessage.InnerText = playerName.InnerText + " wins!";
                 return;
             }
             if (player1Turn.Value.Equals("true")) player1Turn.Value = "false";
@@ -44,23 +49,23 @@ namespace TicTacToe
         {
             for (int i = 0; i < gameMap.Value.Length; i += 3)
             {
-                if (gameMap.Value[i] == gameMap.Value[i + 1] && gameMap.Value[i] == gameMap.Value[i + 2])
+                if (gameMap.Value[i] != '0' && gameMap.Value[i] == gameMap.Value[i + 1] && gameMap.Value[i] == gameMap.Value[i + 2])
                 {
                     return true;
                 }
             }
             for (int i = 0; i < 3; i++)
             {
-                if (gameMap.Value[i] == gameMap.Value[i + 3] && gameMap.Value[i] == gameMap.Value[i + 6])
+                if (gameMap.Value[i] != '0' && gameMap.Value[i] == gameMap.Value[i + 3] && gameMap.Value[i] == gameMap.Value[i + 6])
                 {
                     return true;
                 }
             }
-            if (gameMap.Value[0] == gameMap.Value[4] && gameMap.Value[0] == gameMap.Value[8])
+            if (gameMap.Value[0] != '0' && gameMap.Value[0] == gameMap.Value[4] && gameMap.Value[0] == gameMap.Value[8])
             {
                 return true;
             }
-            if (gameMap.Value[2] == gameMap.Value[4] && gameMap.Value[2] == gameMap.Value[6])
+            if (gameMap.Value[2] != '0' && gameMap.Value[2] == gameMap.Value[4] && gameMap.Value[2] == gameMap.Value[6])
             {
                 return true;
             }

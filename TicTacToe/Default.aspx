@@ -62,6 +62,7 @@
         </section>
         <input type="hidden" id="player1Turn" name="player1Turn" value="true" runat="server" />
         <input type="hidden" id="init" name="init" value="true" runat="server" />
+        <input type="hidden" id="hasWon" name="hasWon" value="false" runat="server" />
         <input type="hidden" id="gameMap" name="gameMap" value="000000000" runat="server" />
     </form>
 </body>
